@@ -1,6 +1,6 @@
 .about-project__schedule {
   display: grid;
-  grid-template-columns: 228px 1fr;
+  grid-template-columns: 20% 1fr;
   grid-template-rows: 36px 36px;
   row-gap: 14px;
   text-align: center;
@@ -35,6 +35,14 @@
 @media (max-width: 870px) {
   .about-project__schedule {
     grid-template-columns: 140px 1fr;
-    grid-template-rows: 36px 36px;
+
+  }
+}
+
+@media (max-width: 450px) {
+  .about-project__schedule {
+    font-size: 11px;
+    grid-template-columns: 100px 1fr;
+
   }
 }

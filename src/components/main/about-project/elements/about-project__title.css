@@ -10,3 +10,9 @@
   letter-spacing: -0.04em;
   color: #ffffff;
 }
+
+@media (max-width: 450px){
+  .about-project__title {
+    font-size: 18px;
+  }
+}

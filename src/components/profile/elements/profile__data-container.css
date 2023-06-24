@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .profile__data-container {
     width: 260px;
   }

@@ -12,6 +12,12 @@
   }
 }
 
+@media (max-width: 450px){
+  .promo {
+    padding: 0 10px 0 10px;
+  }
+}
+
 @import url(./elements/promo__main.css);
 @import url(./elements/promo__text-block.css);
 @import url(./elements/promo__title.css);
