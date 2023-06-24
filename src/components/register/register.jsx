@@ -1,4 +1,5 @@
 import Form from '../form/form';
+import { Link } from 'react-router-dom';
 import Input from '../input/input';
 import useFormWithValidation from '../../utils/formValidator';
 import logo from '../../images/logo.svg';
@@ -15,7 +16,9 @@ export default function Register({ onAuthoriz }) {
   return (
     <section className='entry'>
       <div className='entry__container'>
-        <img src={logo} alt='логотип' />
+        <Link className='header__logo' to='/'>
+          <img src={logo} alt='логотип' />
+        </Link>
         <h2 className='entry__title'>Добро пожаловать!</h2>
         <Form
           name='email'
@@ -50,7 +53,9 @@ export default function Register({ onAuthoriz }) {
         </Form>
         <p className='entry__question'>
           Уже зарегистрированы?
-          <button className='entry__login-button'>Войти</button>
+          <Link className='entry__login-button' to='/signin'>
+            Войти
+          </Link>
         </p>
       </div>
     </section>
