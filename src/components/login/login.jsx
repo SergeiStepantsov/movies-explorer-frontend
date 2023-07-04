@@ -1,23 +1,23 @@
+import { Link, useNavigate } from 'react-router-dom';
 import Form from '../form/form';
 import Input from '../input/input';
 import useFormWithValidation from '../../utils/formValidator';
 import logo from '../../images/logo.svg';
-import { Link } from 'react-router-dom';
 
-
-export default function Login({ onAuthoriz }) {
+export default function Login({ onLogin, serverError }) {
   const formValidator = useFormWithValidation();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAuthoriz(formValidator.values['Email'], formValidator.values['Password']);
+    onLogin(formValidator.values['Email'], formValidator.values['Password']);
     formValidator.resetForm();
   }
-
+  
   return (
     <section className='entry'>
       <div className='entry__container'>
-        <Link className='header__logo' to='/'>
+        <Link className='entry__logo' to='/'>
           <img src={logo} alt='логотип' />
         </Link>
         <h2 className='entry__title'>Рады видеть!</h2>
@@ -26,7 +26,8 @@ export default function Login({ onAuthoriz }) {
           onSubmit={handleSubmit}
           isValid={formValidator.isValid}
           buttonText='Войти'
-          registration={false}>
+          registration={false}
+          message={serverError}>
           <Input
             minLength={'2'}
             maxLength={'50'}
@@ -45,10 +46,14 @@ export default function Login({ onAuthoriz }) {
           />
         </Form>
         <p className='entry__question'>
-          Ещё не зарегистрированы?
-          <Link className='entry__login-button' to='/signup'>
+          Еще не зарегистрированы?
+          <button
+            onClick={() => {
+              navigate('/signup', { replace: true });
+            }}
+            className='entry__login-button'>
             Регистрация
-          </Link>
+          </button>
         </p>
       </div>
     </section>

@@ -1,4 +1,4 @@
-function Input({ minLength, maxLength, type, name, placeholder, Ref, formValidator }) {
+function Input({ minLength, maxLength, pattern = null, type, name, placeholder, Ref, formValidator }) {
   return (
     <>
       <p className='forms-fieldset__input-title'>{placeholder}</p>
@@ -15,6 +15,7 @@ function Input({ minLength, maxLength, type, name, placeholder, Ref, formValidat
         onChange={formValidator.handleChange}
         ref={Ref}
         placeholder={placeholder}
+        pattern={pattern}
       />
       <span className='forms-fieldset__error'>{formValidator.errors[name]}</span>
     </>

@@ -4,7 +4,7 @@ import menuPopupButton from '../../images/menu-popup-button.svg';
 import logo from '../../images/logo.svg';
 import Navigation from '../navigation/navigation';
 
-function Header({ currentLocation, onNavButtonClick, onCloseButtonClick, visability }) {
+function Header({ currentLocation, onNavButtonClick, onCloseButtonClick, visability, loggedIn }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -42,11 +42,19 @@ function Header({ currentLocation, onNavButtonClick, onCloseButtonClick, visabil
       ) : (
         <div className='header__buttons-bar'>
           <nav className='header__movies-navigator'>
-            <Link className='header__button-movies header__button-movies_active' to='/movies'>
+            <Link
+              className={`header__button-movies ${
+                currentLocation === '/movies' ? 'header__button-movies_active' : ''
+              }`}
+              to='/movies'>
               Фильмы
             </Link>
-            <Link className='header__button-movies' to='/saved-movies'>
-              Сохраненые фильмы
+            <Link
+              className={`header__button-movies ${
+                currentLocation === '/saved-movies' ? 'header__button-movies_active' : ''
+              }`}
+              to='/saved-movies'>
+              Сохраненные фильмы
             </Link>
           </nav>
           <Link className='header__button-account' to='/profile'>
@@ -55,7 +63,7 @@ function Header({ currentLocation, onNavButtonClick, onCloseButtonClick, visabil
           </Link>
         </div>
       )}
-      <Navigation opened={visability} onCloseButtonClick={onCloseButtonClick} />
+      <Navigation opened={visability} onCloseButtonClick={onCloseButtonClick} currentLocation={currentLocation} />
     </header>
   );
 }

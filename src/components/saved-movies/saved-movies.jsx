@@ -1,12 +1,41 @@
+import { useEffect, useState } from 'react';
 import MoviesCardList from '../movies/movies-card-list/movies-card-list';
-import { testFavoriteCards } from '../../data/testCards';
 import SearchForm from '../movies/search-form/search-form';
 
-function SavedMovies({ currentLocation }) {
+function SavedMovies({
+  currentLocation,
+  savedMovies,
+  searchSuccses,
+  onSavedSearchSubmit,
+  onSavedCheckcboxClick,
+  onCardUnlike,
+}) {
+  const [resultMessage, setResultMessage] = useState('');
+
+  useEffect(() => {
+    if (searchSuccses && savedMovies.length === 0) {
+      setResultMessage('Ничего не найдено');
+    } else {
+      setResultMessage('');
+    }
+  }, [searchSuccses, savedMovies]);
+
   return (
     <section className='saved-movies'>
-      <SearchForm />
-      <MoviesCardList moviesForLayout={testFavoriteCards} currentLocation={currentLocation} />
+      <SearchForm
+        onSearchSubmit={onSavedSearchSubmit}
+        onCheckboxClick={onSavedCheckcboxClick}
+        currentLocation={currentLocation}
+      />
+      {savedMovies.length !== 0 ? (
+        <MoviesCardList
+          savedMovies={savedMovies}
+          moviesForLayout={savedMovies}
+          currentLocation={currentLocation}
+          onCardUnlike={onCardUnlike}
+        />
+      ) : null}
+      {resultMessage && <h1 className='movies__message'>{resultMessage}</h1>}
     </section>
   );
 }

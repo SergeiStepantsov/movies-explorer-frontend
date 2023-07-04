@@ -1,15 +1,26 @@
 import Form from '../form/form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../input/input';
 import useFormWithValidation from '../../utils/formValidator';
 import logo from '../../images/logo.svg';
+import { useState } from 'react';
 
-export default function Register({ onAuthoriz }) {
+
+export default function Register({ onRegistration, serverError }) {
   const formValidator = useFormWithValidation();
+  const navigate = useNavigate();
+  const [message, setMessage] = useState(serverError);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAuthoriz(formValidator.values['Email'], formValidator.values['Password']);
+    if (!formValidator.isValid) {
+      setMessage('Пожалуйста, укажите корректные данные!');
+    }
+    onRegistration(
+      formValidator.values['Name'],
+      formValidator.values['Email'],
+      formValidator.values['Password'],
+    );
     formValidator.resetForm();
   }
 
@@ -25,7 +36,8 @@ export default function Register({ onAuthoriz }) {
           onSubmit={handleSubmit}
           isValid={formValidator.isValid}
           buttonText='Зарегистрироваться'
-          registration={true}>
+          registration={true}
+          message={message}>
           <Input
             minLength={'2'}
             maxLength={'50'}
@@ -53,9 +65,13 @@ export default function Register({ onAuthoriz }) {
         </Form>
         <p className='entry__question'>
           Уже зарегистрированы?
-          <Link className='entry__login-button' to='/signin'>
+          <button
+            onClick={() => {
+              navigate('/signin', { replace: true });
+            }}
+            className='entry__login-button'>
             Войти
-          </Link>
+          </button>
         </p>
       </div>
     </section>
