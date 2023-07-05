@@ -74,8 +74,8 @@ function SearchForm({ onSearchSubmit, onCheckboxClick, currentLocation }) {
       <span className='search__form-error'>{searchError}</span>
       <div className='search__slider'>
         <input
-          className={`search__slider-button ${shortSelected ? 'search__slider-button_active' : ''}`}
           type='checkbox'
+          className={`search__slider-button ${shortSelected ? 'search__slider-button_active' : ''}`}
           name='short'
           checked={shortSelected}
           onChange={handleCheckboxChange}></input>
