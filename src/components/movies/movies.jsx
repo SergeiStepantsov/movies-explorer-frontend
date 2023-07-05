@@ -39,10 +39,10 @@ function Movies({
   useEffect(() => {
     if (searchSuccses && initialMovies.length === 0 && moviesToDisplay.length === 0) {
       setResultMessage(
-        'During the request, an error occurred.Perhaps the problem with the connection or the server is not available.Wait a bit and try again',
+        'Во время запроса произошла ошибка.Возможно, проблема с соединением или сервер недоступен.Подождите немного и попробуйте снова',
       );
     } else if (searchSuccses && moviesToDisplay.length === 0) {
-      setResultMessage('Nothing found');
+      setResultMessage('Ничего не найдено');
     } else {
       setResultMessage('');
     }

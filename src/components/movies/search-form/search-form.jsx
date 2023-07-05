@@ -61,7 +61,7 @@ function SearchForm({ onSearchSubmit, onCheckboxClick, currentLocation }) {
           <img className='search__form-image' src={SearchIcon} alt='search icon' />
         )}
         <input
-          placeholder='Movie'
+          placeholder='Фильмы'
           name='search'
           className='search__form-input'
           type='text'
