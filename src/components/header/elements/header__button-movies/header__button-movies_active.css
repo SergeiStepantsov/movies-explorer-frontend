@@ -1,3 +1,4 @@
 .header__button-movies_active {
-  font-weight: 500;
+  font-weight: 400;
+  opacity: 0.9;
 }

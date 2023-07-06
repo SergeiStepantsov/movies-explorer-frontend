@@ -20,7 +20,7 @@ function Header({ currentLocation, onNavButtonClick, onCloseButtonClick, visabil
       <Link className='header__logo' to='/'>
         <img src={logo} alt='logo' />
       </Link>
-      {currentLocation === '/' ? (
+      {currentLocation === '/' && !loggedIn ? (
         <div className='header__buttons-bar'>
           <Link className='header__button-registrate' to='/signup'>
             Регистрация
