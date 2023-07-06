@@ -1,5 +1,7 @@
 ## Фронтенд дипломной работы Movies Explorer
 
+Ссылка на [pull request](https://github.com/SergeiStepantsov/movies-explorer-frontend/pull/2) 
+
 Приложение, в котором пользователи могут создавать аккаунт, искать фильмы по ключевым словам и добавлять их в избранное.
 Приложение работает с двумя API.
 
