@@ -1,0 +1,9 @@
+.profile__button_inactive {
+  color: #808080;
+  cursor: default;
+}
+
+.profile__button_inactive:hover {
+  opacity: 1;
+}
+

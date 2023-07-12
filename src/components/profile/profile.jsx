@@ -10,11 +10,13 @@ function Profile({ onLogout, onProfileSubmit, message }) {
   function checkDataIsSame() {
     const sameName = formValidator.values['Name'] === currentUser.name;
     const sameEmail = formValidator.values['Email'] === currentUser.email;
+    //console.log(sameName && sameEmail);
     if (sameName && sameEmail) {
       return true;
     } else {
       return false;
     }
+    
   }
 
   function handleSubmit(e) {
@@ -26,7 +28,7 @@ function Profile({ onLogout, onProfileSubmit, message }) {
   }
 
   useEffect(() => {
-    formValidator.resetForm({ Name: currentUser.name, Email: currentUser.email }, {}, true);
+    formValidator.resetForm({ Name: currentUser.name, Email: currentUser.email }, {}, true, {});
   }, [currentUser]);
 
   return (
@@ -63,12 +65,11 @@ function Profile({ onLogout, onProfileSubmit, message }) {
         <span className='profile__input-error '>{formValidator.errors['Email']}</span>
 
         <div className='profile__menu'>
+         
           <button
             type='submit'
-            disabled={!formValidator.isValid === !checkDataIsSame()}
-            className={`profile__button ${
-              !formValidator.isValid === !checkDataIsSame() ? 'profile__button_inactive' : ''
-            }`}>
+            disabled={!formValidator.isValid || checkDataIsSame()}
+            className={(!formValidator.isValid || checkDataIsSame()) ? 'profile__button profile__button_inactive' : 'profile__button'}>
             Редактировать
           </button>
           <button onClick={() => onLogout()} className='profile__button profile__button_logout'>

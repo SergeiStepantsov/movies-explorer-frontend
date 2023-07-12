@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 
 const handleCustomError = (value, name) => {
   const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-  const nameRegex = /^[A-Za-zА-Яа-яЁё\\s-]*$/;
+  const nameRegex = /^[A-Za-zА-Яа-яЁё+ \\s-]*$/;
   if (name === 'Email') {
     if (!emailRegex.test(value)) {
       return 'Email должен быть корретным, например "example@example.com"';

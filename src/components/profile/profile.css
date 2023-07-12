@@ -23,3 +23,6 @@
 @import url(./elements/profile__menu.css);
 @import url(./elements/profile__button/profile__button.css);
 @import url(./elements/profile__button/profile__button_logout.css);
+@import url(./elements/profile__button/profile__button_inactive.css);
+@import url(./elements/profile__input-error.css);
+@import url(./elements/profile__message.css);

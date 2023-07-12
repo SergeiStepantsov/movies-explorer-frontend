@@ -111,6 +111,7 @@ function App() {
 
   function handleNavMenuVisability() {
     setNavigationOpened(!navigationOpened);
+    setServerMessage ('');
   }
   function handleAuthorization(email, password) {
     authorize(email, password)
@@ -126,6 +127,7 @@ function App() {
           });
           setJwt(jwt);
           setLoggedIn(true);
+          setServerMessage ('');
           navigate('/movies', { replace: true });
         }
       })
@@ -173,6 +175,7 @@ function App() {
       setSearchSavedSuccses(false);
       setLoggedIn(false);
       navigate('/', { replace: true });
+      setServerMessage ('');
     }
   }
 
