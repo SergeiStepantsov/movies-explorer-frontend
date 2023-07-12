@@ -15,7 +15,7 @@ function MoviesCardList({
           <MoviesCard
             movie={movie}
             currentLocation={currentLocation}
-            key={movie.nameEN}
+            key={movie.id}
             savedMovies={savedMovies}
             onCardLike={onCardLike}
             onCardUnlike={onCardUnlike}
