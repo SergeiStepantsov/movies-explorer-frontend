@@ -6,11 +6,9 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 function Profile({ onLogout, onProfileSubmit, message }) {
   const currentUser = useContext(CurrentUserContext);
   const formValidator = useFormWithValidation();
-
   function checkDataIsSame() {
     const sameName = formValidator.values['Name'] === currentUser.name;
     const sameEmail = formValidator.values['Email'] === currentUser.email;
-    //console.log(sameName && sameEmail);
     if (sameName && sameEmail) {
       return true;
     } else {
